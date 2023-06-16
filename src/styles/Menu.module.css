@@ -1,0 +1,200 @@
+
+.menu_container a {
+    color: rgb(var(--menu-text-color-rgb));
+    border-radius: var(--border-radius);
+    font-size: medium;
+    text-align: center;
+    background: transparent;
+    padding: 1em 5em;
+    display: block;
+}
+
+a.selected_page {
+    text-decoration: underline;
+}
+
+@media (hover: hover) {
+    .menu_container a:hover {
+        color: rgb(var(--accent-colour-rgb));
+        background: rgba(var(--menu-hover-colour-rgba));
+    }
+}
+
+.menu_root {
+    --language-checkbox-size: 35px;
+
+    position: fixed;
+    left: 0;
+    height: 100%;
+    z-index: 5;
+}
+
+.menu_container {
+    background: rgba(var(--menu-background-rgba));
+    padding: 4em 0;
+    margin: 1em;
+    border-radius: var(--border-radius);
+}
+
+.menu_icon, .menu_toggle {
+    position: fixed;
+    left: 30px;
+    top: 30px;
+    z-index: 6;
+}
+
+.menu_toggle {
+    width: 30px;
+    height: 30px;
+    z-index: 7;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.menu_icon div {
+    background: rgb(var(--accent-colour-rgb));
+    width: 30px;
+    height: 3px;
+    margin: 5px 0;
+    border-radius: 2px;
+    transition: transform var(--transition-duration);
+}
+
+.socials {
+    position: fixed;
+    right: 0;
+    margin: 1em;
+}
+
+.socials > * {
+    height: 2em;
+    width: 2em;
+    margin: 0.5em;
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.blurScreen {
+    position: fixed;
+    height: 100%;
+    width: 100vw;
+}
+
+
+/* Blur transitions */
+.menu_toggle:checked ~ .blurScreen {
+    backdrop-filter: blur(6px);
+    transition: backdrop-filter var(--transition-duration);
+    z-index: 1;
+}
+.menu_toggle:not(:checked) ~ .blurScreen {
+    filter: none;
+    z-index: -10;
+    transition: filter var(--transition-duration);
+}
+
+/* Menu transitions */
+.menu_toggle:not(:checked) ~ .menu_root {
+    margin-left: -50%;
+    transition: margin-left var(--transition-duration);
+}
+.menu_toggle:checked ~ .menu_root {
+    margin-left: 0;
+    transition: margin-left var(--transition-duration);
+}
+
+/* Icon transitions */
+.menu_toggle:not(:checked) ~ .menu_icon div {
+    transform: none;
+}
+.menu_toggle:checked ~ .menu_icon .top_bar {
+    transform: rotate(-30deg) scaleX(.5) translateY(5px);
+}
+.menu_toggle:checked ~ .menu_icon .middle_bar {
+    transform: translateX(10px);
+}
+.menu_toggle:checked ~ .menu_icon .bottom_bar {
+    transform: rotate(30deg) scaleX(.5) translateY(-5px);
+}
+
+
+
+/* Language switch */
+
+.lang_logo, .lang_root {
+    width: var(--language-checkbox-size);
+    height: var(--language-checkbox-size);
+    border-radius: var(--language-checkbox-size);
+}
+
+.lang_toggle {
+    display: none;
+}
+
+.lang_root {
+    width: calc(var(--language-checkbox-size) * 2);
+    margin: 3em auto 0 auto;
+    outline: 3px solid rgb(var(--accent-colour-rgb));
+    cursor: pointer;
+}
+
+.lang_logo {
+    user-select: none;
+    background: rgb(var(--accent-colour-rgb)) contain;
+    background-size: var(--language-checkbox-size);
+    transition: transform var(--transition-duration);
+}
+
+/* Language transitions */
+.lang_toggle:checked ~ .lang_logo {
+    content: url('https://hatscripts.github.io/circle-flags/flags/lt.svg');
+    transform: translateX(100%);
+}
+.lang_toggle:not(:checked) ~ .lang_logo {
+    content: url('https://hatscripts.github.io/circle-flags/flags/gb.svg');
+    transform: rotate(180deg);
+}
+
+
+/* Mobile */
+@media (max-width: 700px) {
+
+    /* Menu transitions */
+    .menu_toggle:checked ~ .menu_root {
+        margin-bottom: 0;
+        transition: margin-bottom var(--transition-duration);
+    }
+    .menu_toggle:not(:checked) ~ .menu_root {
+        margin-left: 0;
+        margin-bottom: -100%;
+        transition: margin-bottom var(--transition-duration);
+    }
+
+    /* Icon transitions */
+    .menu_toggle:checked ~ .menu_icon .top_bar {
+        transform: rotate(-120deg) scaleX(.5) translate(-9.5px, -6px);
+    }
+    .menu_toggle:checked ~ .menu_icon .middle_bar {
+        transform: rotate(-90deg) translateX(10px);
+    }
+    .menu_toggle:checked ~ .menu_icon .bottom_bar {
+        transform: rotate(-60deg) scaleX(.5) translate(19px, -1.6px);
+    }
+
+    /* Mobile design */
+    .menu_root {
+        height: auto;
+        width: 100%;
+        bottom: 0;
+    }
+
+    .menu_icon, .menu_toggle {
+        top: auto;
+        bottom: 30px;
+    }
+
+    .socials {
+        bottom: 0;
+    }
+}
