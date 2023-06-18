@@ -1,0 +1,43 @@
+
+.main {
+    padding: 6rem;
+    min-height: 100vh;
+}
+
+.main h1 {
+    text-align: center;
+}
+
+.form {
+    width: fit-content;
+    margin: auto;
+}
+
+.form p {
+    padding: 1em 0;
+}
+
+.form * {
+    display: block;
+    margin: 0 0 2em 0;
+    padding: 1em;
+    width: 50vw;
+    min-width: 50%;
+    border-radius: var(--border-radius);
+}
+
+.form textarea {
+    height: 200px;
+}
+
+.form > ::placeholder {
+    color: rgb(var(--accent-colour-rgb));
+}
+
+.form button {
+    width: auto;
+    background: rgb(var(--accent-colour-rgb));
+    color: white;
+}
+
+

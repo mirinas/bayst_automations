@@ -9,7 +9,7 @@ export function Menu() {
 
     const about = t({ en: 'About', lt: 'Apie' })
     const services = t({ en: 'Services', lt: 'Paslaugos' })
-    const portfolio = t({ en: 'Portfolio', lt: 'Darbai' })
+    const contact = t({ en: 'Contact', lt: 'Susisiekite' })
 
     return (
         <>
@@ -17,7 +17,7 @@ export function Menu() {
                 <div className={styles.menu_container}>
                     <Button id={'about'} text={about} href={'/'}/>
                     <Button id={'services'} text={services} href={'/services'}/>
-                    {/*<Button text={portfolio} href={'/portfolio'}/>*/}
+                    <Button id={'contact'} text={contact} href={'/contact'}/>
                     <LanguageSwitch/>
                 </div>
             </div>
