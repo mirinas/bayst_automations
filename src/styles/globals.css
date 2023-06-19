@@ -114,6 +114,7 @@ p, h1, h2, h3, h4, li {
 
 input, textarea {
   background: white;
+  color: black;
 }
 
 li {
