@@ -14,6 +14,7 @@
 }
 
 .form p {
+    text-align: justify;
     padding: 1em 0;
 }
 
@@ -27,7 +28,9 @@
 }
 
 .form textarea {
-    height: 200px;
+    min-height: 150px;
+    max-width: 50vw;
+    min-width: 50vw;
 }
 
 .form > ::placeholder {
@@ -39,5 +42,40 @@
     background: rgb(var(--accent-colour-rgb));
     color: white;
 }
+
+.form button:disabled {
+    background: rgb(var(--background-rgb));
+}
+
+#notification {
+    position: fixed;
+    min-width: 5em;
+
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 2em;
+    padding: 1em;
+
+    border-radius: var(--border-radius);
+    background: rgb(var(--background-card-rgb));
+
+    transition: transform var(--transition-duration);
+}
+
+#notification.hidden {
+    transform: translate(-50%, 6em);
+}
+
+#notification.error {
+    background: #ff857b;
+}
+
+
+
+
+
+
+
+
 
 
